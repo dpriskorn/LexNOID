@@ -1,0 +1,19 @@
+[project]
+name = "lexnoid"
+version = "0.1.0"
+description = "Software to scrape Nye ord i Dansk and add statements to matching lexemes in Wikidata"
+authors = [
+    {name = "Nizo Priskorn",email = "68460690+dpriskorn@users.noreply.github.com"}
+]
+license = {text = "GPLv3+"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic (>=2.11.7,<3.0.0)",
+    "ddgs (>=9.4.3,<10.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
