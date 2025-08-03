@@ -10,7 +10,7 @@ from models.search_result import SearchResult, Hit
 class Search(BaseModel):
     source: str = "noid"
     from_index: int = 0
-    size: int = 1000
+    size: int = 10000
     base_url: str = "https://search.dsn.dk/api/"
     danish_alphabet: ClassVar[List[str]] = list("abcdefghijklmnopqrstuvwxyzæøå")
     hits: Set[Hit] = set()
@@ -27,6 +27,8 @@ class Search(BaseModel):
         if response.ok:
             # pprint(response.json())
             sr = SearchResult.model_validate(response.json())
+            print(response.url)
+            # exit(0)
             return sr
         else:
             raise Exception(f"Failed to fetch for letter '{letter}': {response.status_code}")
