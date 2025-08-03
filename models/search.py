@@ -53,10 +53,11 @@ class Search(BaseModel):
         print(f"Writing TSV with all {self.number_of_hits} records")
         with open("noid.tsv", "w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f, delimiter="\t")
-            writer.writerow(["lemma", "id", "definition"])
+            writer.writerow(["id", "lemma", "category", "definition"])
 
             for hit in self.hits:
                 lemma = hit.lemma
                 noid = hit.noid
                 definition = hit.definition
-                writer.writerow([lemma, noid, definition])
+                category = hit.lexical_category
+                writer.writerow([noid, lemma, category, definition])
